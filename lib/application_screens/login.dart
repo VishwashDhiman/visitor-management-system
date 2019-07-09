@@ -19,6 +19,7 @@ class _UserLogin extends State<UserLogin> {
         appBar: AppBar(
             leading: IconButton(icon: Icon(Icons.arrow_back),
                 onPressed: (){
+              // For releasing the route from stack.
               Navigator.pop(context);
             }),
             title: Text("Login")
@@ -34,6 +35,7 @@ class _UserLogin extends State<UserLogin> {
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         controller: email,
+                        // Simple validation for validating email
                         validator: (String value) {
                           if (value.isEmpty || !value.contains("@")) {
                             return 'Please enter valid email Id';
@@ -93,11 +95,13 @@ class _UserLogin extends State<UserLogin> {
         )
     );
   }
+  // Generating message
   String loggedInUserDetails() {
       String userID = email.text;
       return "Welcom back $userID";
   }
 
+  // Displaying message using Snackbar
   void showSnackBar(BuildContext context) {
     String message = loggedInUserDetails();
     var snackBar = SnackBar(

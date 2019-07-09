@@ -2,7 +2,9 @@ import "package:flutter/material.dart";
 
 class BookDemo extends StatefulWidget {
   String title = '';
-  BookDemo(this.title){}
+
+  BookDemo(this.title) {}
+
   @override
   State<StatefulWidget> createState() {
     return _BookDemo(this.title);
@@ -18,14 +20,17 @@ class _BookDemo extends State<BookDemo> {
   TextEditingController email = TextEditingController();
   TextEditingController contactNumber = TextEditingController();
   TextEditingController message = TextEditingController();
-  _BookDemo(this.title){}
+
+  _BookDemo(this.title) {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text(title),
-          leading: IconButton(icon: Icon(Icons.arrow_back),
-              onPressed: (){
+          title: Text(title),
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
                 Navigator.pop(context);
               }),
         ),
@@ -49,7 +54,7 @@ class _BookDemo extends State<BookDemo> {
                             labelText: 'Your Name',
                             hintText: 'JohnDeo',
                             errorStyle:
-                            TextStyle(color: Colors.red, fontSize: 15.0),
+                                TextStyle(color: Colors.red, fontSize: 15.0),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0))),
                       )),
@@ -68,7 +73,7 @@ class _BookDemo extends State<BookDemo> {
                             labelText: 'Email',
                             hintText: 'JohnDeo@abc.com',
                             errorStyle:
-                            TextStyle(color: Colors.red, fontSize: 15.0),
+                                TextStyle(color: Colors.red, fontSize: 15.0),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0))),
                       )),
@@ -87,7 +92,7 @@ class _BookDemo extends State<BookDemo> {
                             labelText: 'Mobile Number',
                             hintText: 'JohnDeo@1',
                             errorStyle:
-                            TextStyle(color: Colors.red, fontSize: 15.0),
+                                TextStyle(color: Colors.red, fontSize: 15.0),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0))),
                       )),
@@ -103,46 +108,36 @@ class _BookDemo extends State<BookDemo> {
                           }
                         },
                         decoration: InputDecoration(
-
                             labelText: 'Your Message',
                             errorStyle:
-                            TextStyle(color: Colors.red, fontSize: 15.0),
+                                TextStyle(color: Colors.red, fontSize: 15.0),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0))),
                       )),
                   Padding(
                       padding: EdgeInsets.all(_minimumPadding * 3),
-                      child:
-                          RaisedButton(
-                            child: Text(
-                              'Send Enquiry',
-                              textScaleFactor: 1.5,
-                            ),
-                            onPressed: (){
-                              setState(() {
-                                if(_bookDemoFormKey.currentState.validate()) {
-                                  showSnackBar(context);
+                      child: RaisedButton(
+                        child: Text(
+                          'Send Enquiry',
+                          textScaleFactor: 1.5,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            if (_bookDemoFormKey.currentState.validate()) {
+                              showSnackBar(context);
 //                                    Navigator.pop(context);
 
-                                }
-                              });
-                            },
-
-                          )
-
-                  ),
-                ]
-                )
-            )
-        )
-    );
+                            }
+                          });
+                        },
+                      )),
+                ]))));
   }
 }
 
 void showSnackBar(BuildContext context) {
   var snackBar = SnackBar(
     content: Text("We will react you as soon as possible!!!!"),
-
   );
   Scaffold.of(context).showSnackBar(snackBar);
 }

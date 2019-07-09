@@ -8,6 +8,7 @@ class UserSignUp extends StatefulWidget {
 }
 
 class _UserSignUp extends State<UserSignUp> {
+  // Unique form key
   var _signUpFormKey = GlobalKey<FormState>();
   final _minimumPadding = 10.0;
   TextEditingController userName = TextEditingController();
@@ -16,17 +17,16 @@ class _UserSignUp extends State<UserSignUp> {
   TextEditingController email = TextEditingController();
   TextEditingController company = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            leading: IconButton(icon: Icon(Icons.arrow_back),
-                onPressed: (){
+            leading: IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
                   Navigator.pop(context);
                 }),
-            title: Text("SignUp")
-        ),
+            title: Text("SignUp")),
         body: Form(
             key: _signUpFormKey,
             child: Padding(
@@ -47,10 +47,8 @@ class _UserSignUp extends State<UserSignUp> {
                           decoration: InputDecoration(
                               labelText: 'UserName',
                               hintText: 'JohnDeo',
-                              errorStyle: TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 15.0
-                              ),
+                              errorStyle:
+                                  TextStyle(color: Colors.red, fontSize: 15.0),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0))),
                         )),
@@ -68,10 +66,8 @@ class _UserSignUp extends State<UserSignUp> {
                           decoration: InputDecoration(
                               labelText: 'Email',
                               hintText: 'JohnDeo@abc.com',
-                              errorStyle: TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 15.0
-                              ),
+                              errorStyle:
+                                  TextStyle(color: Colors.red, fontSize: 15.0),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0))),
                         )),
@@ -89,10 +85,8 @@ class _UserSignUp extends State<UserSignUp> {
                           decoration: InputDecoration(
                               labelText: 'Mobile Number',
                               hintText: '9876543210',
-                              errorStyle: TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 15.0
-                              ),
+                              errorStyle:
+                                  TextStyle(color: Colors.red, fontSize: 15.0),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0))),
                         )),
@@ -111,10 +105,8 @@ class _UserSignUp extends State<UserSignUp> {
                           decoration: InputDecoration(
                               labelText: 'UserName',
                               hintText: 'JohnDeo@1',
-                              errorStyle: TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 15.0
-                              ),
+                              errorStyle:
+                                  TextStyle(color: Colors.red, fontSize: 15.0),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0))),
                         )),
@@ -132,47 +124,40 @@ class _UserSignUp extends State<UserSignUp> {
                           decoration: InputDecoration(
                               labelText: 'Company',
                               hintText: 'XYZ',
-                              errorStyle: TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 15.0
-                              ),
+                              errorStyle:
+                                  TextStyle(color: Colors.red, fontSize: 15.0),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0))),
                         )),
                     Padding(
                         padding: EdgeInsets.all(_minimumPadding * 3),
-                            child: RaisedButton(
-                              child: Text(
-                                'Sign Up',
-                                textScaleFactor: 1.5,
-                              ),
-                              onPressed: (){
-                                setState(() {
-                                  if(_signUpFormKey.currentState.validate()) {
-                                    showSnackBar(context);
+                        child: RaisedButton(
+                            child: Text(
+                              'Sign Up',
+                              textScaleFactor: 1.5,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                if (_signUpFormKey.currentState.validate()) {
+                                  showSnackBar(context);
 //                                    Navigator.pop(context);
-                                  }
-                                });
-                              }
-                        )
-                    ),
+                                }
+                              });
+                            })),
                   ],
-                )
-            )
-        )
-    );
+                ))));
   }
-  String signedUpUserDetail () {
+
+  String signedUpUserDetail() {
     String name = userName.text;
     return "Signed Up Successfully by $name";
   }
+
   void showSnackBar(BuildContext context) {
     String message = signedUpUserDetail();
     var snackBar = SnackBar(
       content: Text(message),
-
     );
     Scaffold.of(context).showSnackBar(snackBar);
   }
 }
-

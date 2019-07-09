@@ -6,12 +6,10 @@ void main() => runApp(VisitorManagement());
 class VisitorManagement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Initialized a material app
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Visitor Management System",
-        home: MyHomePage()
-    );
+        home: MyHomePage());
   }
 }
-
-
