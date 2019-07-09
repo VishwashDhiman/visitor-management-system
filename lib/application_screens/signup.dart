@@ -103,7 +103,7 @@ class _UserSignUp extends State<UserSignUp> {
                             }
                           },
                           decoration: InputDecoration(
-                              labelText: 'UserName',
+                              labelText: 'Password',
                               hintText: 'JohnDeo@1',
                               errorStyle:
                                   TextStyle(color: Colors.red, fontSize: 15.0),
@@ -131,19 +131,24 @@ class _UserSignUp extends State<UserSignUp> {
                         )),
                     Padding(
                         padding: EdgeInsets.all(_minimumPadding * 3),
-                        child: RaisedButton(
-                            child: Text(
-                              'Sign Up',
-                              textScaleFactor: 1.5,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                if (_signUpFormKey.currentState.validate()) {
-                                  showSnackBar(context);
+                        child: Builder(
+                            builder: (context) =>RaisedButton(
+                              child: Text(
+                                'Sign Up',
+                                textScaleFactor: 1.5,
+                              ),
+                              onPressed: (){
+                                setState(() {
+                                  if(_signUpFormKey.currentState.validate()) {
+                                    showSnackBar(context);
 //                                    Navigator.pop(context);
-                                }
-                              });
-                            })),
+
+                                  }
+                                });
+                              },
+                            )
+                        )
+                    ),
                   ],
                 ))));
   }

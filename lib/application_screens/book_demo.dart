@@ -116,21 +116,24 @@ class _BookDemo extends State<BookDemo> {
                       )),
                   Padding(
                       padding: EdgeInsets.all(_minimumPadding * 3),
-                      child: RaisedButton(
-                        child: Text(
-                          'Send Enquiry',
-                          textScaleFactor: 1.5,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            if (_bookDemoFormKey.currentState.validate()) {
-                              showSnackBar(context);
+                      child: Builder(
+                          builder: (context) =>RaisedButton(
+                            child: Text(
+                              'Send',
+                              textScaleFactor: 1.5,
+                            ),
+                            onPressed: (){
+                              setState(() {
+                                if(_bookDemoFormKey.currentState.validate()) {
+                                  showSnackBar(context);
 //                                    Navigator.pop(context);
 
-                            }
-                          });
-                        },
-                      )),
+                                }
+                              });
+                            },
+                          )
+                      )
+                  ),
                 ]))));
   }
 }
