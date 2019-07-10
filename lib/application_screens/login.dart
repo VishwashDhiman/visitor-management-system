@@ -25,73 +25,93 @@ class _UserLogin extends State<UserLogin> {
             title: Text("Login")
         ),
         body: Form(
+
             key: _loginFormKey,
-            child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: ListView(children: <Widget>[
-                  Padding(
-                      padding: EdgeInsets.only(
-                          top: _minimumPadding, bottom: _minimumPadding),
-                      child: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        controller: email,
-                        // Simple validation for validating email
-                        validator: (String value) {
-                          if (value.isEmpty || !value.contains("@")) {
-                            return 'Please enter valid email Id';
-                          }
-                        },
-                        decoration: InputDecoration(
-                            labelText: 'Email',
-                            hintText: 'JohnDeo@abc.com',
-                            errorStyle:
-                                TextStyle(color: Colors.red, fontSize: 15.0),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0))),
-                      )),
-                  Padding(
-                      padding: EdgeInsets.only(
-                          top: _minimumPadding, bottom: _minimumPadding),
-                      child: TextFormField(
-                        keyboardType: TextInputType.text,
-                        controller: password,
-                        obscureText: true,
-                        validator: (String value) {
-                          if (value.isEmpty || value.length < 8) {
-                            return 'Please enter valid password';
-                          }
-                        },
-                        decoration: InputDecoration(
-                            labelText: 'Password',
-                            hintText: 'JohnDeo@1',
-                            errorStyle:
-                                TextStyle(color: Colors.red, fontSize: 15.0),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0))),
-                      )),
-                  Padding(
-                      padding: EdgeInsets.all(_minimumPadding * 3),
-                          child: Builder(
-                            builder: (context) =>RaisedButton(
-                              child: Text(
-                                'Login',
-                                textScaleFactor: 1.5,
-                              ),
-                              onPressed: (){
-                                setState(() {
-                                  if(_loginFormKey.currentState.validate()) {
-                                    showSnackBar(context);
+            child: Container(
+              color: Colors.blueAccent,
+              padding: EdgeInsets.all(40.0),
+              child: Container(
+                margin: EdgeInsets.only(top: 50.0, bottom: 50.0),
+                padding: EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(15.0))
+                  ),
+                child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: ListView(children: <Widget>[
+                    Padding(
+                    padding: EdgeInsets.only(
+                        top: _minimumPadding, bottom: _minimumPadding),
+                    child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      controller: email,
+                      // Simple validation for validating email
+                      validator: (String value) {
+                        if (value.isEmpty || !value.contains("@")) {
+                          return 'Please enter valid email Id';
+                        }
+                      },
+                      decoration: InputDecoration(
+                          labelText: 'Email',
+                          hintText: 'JohnDeo@abc.com',
+                          errorStyle:
+                          TextStyle(color: Colors.red, fontSize: 15.0),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0))),
+                    )),
+                Padding(
+                    padding: EdgeInsets.only(
+                        top: _minimumPadding, bottom: _minimumPadding),
+                    child: TextFormField(
+                      keyboardType: TextInputType.text,
+                      controller: password,
+                      obscureText: true,
+                      validator: (String value) {
+                        if (value.isEmpty || value.length < 8) {
+                          return 'Please enter valid password';
+                        }
+                      },
+                      decoration: InputDecoration(
+                          labelText: 'Password',
+                          hintText: 'JohnDeo@1',
+                          errorStyle:
+                          TextStyle(color: Colors.red, fontSize: 15.0),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0))),
+                    )),
+                Padding(
+                    padding: EdgeInsets.all(_minimumPadding * 3),
+                    child: Builder(
+                        builder: (context) =>RaisedButton(
+                          color: Colors.blueAccent,
+                          child: Text(
+                              'Login',
+                              textScaleFactor: 1.5,
+                              style: TextStyle(
+                                  color: Colors.white
+                              )
+                          ),
+                          onPressed: (){
+                            setState(() {
+                              if(_loginFormKey.currentState.validate()) {
+                                showSnackBar(context);
 //                                    Navigator.pop(context);
 
-                                  }
-                                });
-                              },
-                            )
-                          )
-                  ),
-                ]
+                              }
+                            });
+                          },
+                        )
+                    )
+
+                ),
+
+              ]
+             )
+
                 )
             )
+        )
         )
     );
   }

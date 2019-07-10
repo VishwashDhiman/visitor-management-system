@@ -27,17 +27,22 @@ class HomePageDrawer extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                         padding: EdgeInsets.all(10.0),
-                        child: Text("VMS",
+                        child: Text(
+                            "VMS",
                             style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white))),
-                    Expanded(child: DrawerImage())
-                    ],
-                 ),
+                                fontFamily: 'Roboto',
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white
+                            )
+                        )
+                    ),
+                    Expanded(child: DrawerImage()
+                    )
+                  ],
+                ),
                 decoration: BoxDecoration(
-                  color: Colors.lightBlueAccent,
+                  color: Colors.blueAccent,
                 ),
               ),
               ListTile(
@@ -53,6 +58,18 @@ class HomePageDrawer extends StatelessWidget {
                   },
               ),
               ListTile(
+                title: Text('Products'),
+                onTap: () {
+                  Navigator.pop(context);
+                  },
+              ),
+              ListTile(
+                title: Text('Features'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
                 title: Text('Contact Us'),
                 onTap: () {
                   Navigator.pop(context);
@@ -62,24 +79,46 @@ class HomePageDrawer extends StatelessWidget {
                 children: <Widget>[
                   Padding(
                       padding: EdgeInsets.all(20.0),
-                      child: RaisedButton(
-                        onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => UserLogin()));
-                          },
-                        child: Text("Login"),
-                      )),
-                  Padding(
-                      padding: EdgeInsets.all(20.0),
-                      child: RaisedButton(
+                      child: ButtonTheme(
+                        minWidth: 80.0,
+                        padding: EdgeInsets.all(10.0),
+                        child: RaisedButton(
                           onPressed: () {
                             Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => UserSignUp()));
+                                MaterialPageRoute(builder: (context) => UserLogin()));
+                          },
+                          child: Text(
+                            "Login",
+                            style: TextStyle(
+                              color:Colors.white
+                            )
+                          ),
+                        )
+                      ),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: ButtonTheme(
+                        minWidth: 80.0,
+                        padding: EdgeInsets.all(10.0),
+                        child: RaisedButton(
+                            onPressed: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => UserSignUp()));
                             },
-                          child: Text("Sign Up")))
+                            child: Text(
+                              "Sign Up",
+                              style: TextStyle(
+                                color: Colors.white
+                              ),
+                            )
+                        ),
+                      ),),
                 ],
               )
-            ]));
+            ]
+        )
+    );
   }
 }
 

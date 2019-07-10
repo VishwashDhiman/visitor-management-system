@@ -43,6 +43,11 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/VMS.png
+    - images/icon.webp
+    - images/visitor-ipad.webp
+    - images/hero.webp
+    - images/ipad-features.png
+    - images/access-logs.webp
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -56,22 +61,24 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Handlee
-      fonts:
-        - asset: fonts/Handlee-Regular.ttf
-          style: italic
     - family: Roboto
       fonts:
          - asset: fonts/Roboto-Black.ttf
          - asset: fonts/Roboto-Italic.ttf
          - asset: fonts/Roboto-Light.ttf
+           weight: 300
          - asset: fonts/Roboto-Medium.ttf
            style: italic
            weight: 700
-    - family: ZCOOLQing
+    - family: Raleway
       fonts:
-        - asset: fonts/ZCOOLQingKeHuangYou-Regular.ttf
+        - asset: fonts/Raleway-Bold.ttf
           weight: 700
-  #
+        - asset: fonts/Raleway-ExtraBold.ttf
+          weight: 800
+        - asset: fonts/Raleway-Regular.ttf
+        - asset: fonts/Raleway-Light.ttf
+          weight: 200
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

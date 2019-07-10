@@ -1,208 +1,451 @@
-import 'package:flutter/material.dart';
-import './signup.dart';
-import './book_demo.dart';
+import "package:flutter/material.dart";
+import "./Footer.dart";
+import "./book_demo.dart";
+import "./signup.dart";
 
 class MainPageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height * .90;
-    final double width = MediaQuery.of(context).size.width * .05;
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => BookDemo("Leave us a message")));
-          },
-          child: Icon(
-            Icons.message,
-            size: 30.0,
-          ),
-        ),
-        body: ListView(
-          children: <Widget>[
-            Container(
-                color: Color(0xFF26C6DA),
-                height: height,
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                        padding: EdgeInsets.all(20.0),
-                        child: Text(
-                          "Upgrade to a smart Visitor Management System",
-                          style: TextStyle(
-                              fontFamily: "Roboto",
-                              fontWeight: FontWeight.w800,
-                              fontSize: 40.0,
-                              color: Colors.white),
-                        )),
-                    Padding(
-                        padding: EdgeInsets.all(20.0),
-                        child: RaisedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => UserSignUp()));
-                            },
-                            color: Color(0XFF29B6F6),
-                            child: Text("Get Started",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20.0)))),
-                    Padding(
-                        padding: EdgeInsets.all(20.0),
-                        child: RaisedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          BookDemo("Book Demo")));
-                            },
-                            color: Color(0XFF29B6F6),
-                            child: Text("Schedule a Demo",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20.0)))),
-                  ],
-                )),
-            Container(
-                child: Column(
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(top: 70.0, bottom: 70.0),
-                  padding: EdgeInsets.only(left: width * 3),
-                  child: Center(
-                      child: Text("INTELLIGENT VISITOR MANAGEMENT SYSTEM",
-                          style: TextStyle(
-                              fontSize: 25.0,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: "ZCOOLQing"))),
-                ),
-                Container(
-                    padding: EdgeInsets.all(10.0),
-                    child: Center(
-                        child: Text(
-                      "Greet your visitors with kiosk based visitor management "
-                      "system that notify the hosts and print visitor badges all "
-                      "through one sleek check-in terminal. Enhance your security and "
-                      "corporate image with our best in class visitor management "
-                      "solution - Vizmo. The era of the logbook is over.",
-                      style: TextStyle(fontFamily: "Roboto"),
-                    ))),
-                Container(
-                    padding: EdgeInsets.all(10.0),
-                    child: Center(
-                        child: Text(
-                      "Capture detailed visitor information quickly and accurately to "
-                      "identify, badge and track who is in your buildings and why."
-                      " Present a more professional, security-conscious image to your "
-                      "visitors and make visitors and employees feel safer",
-                      style: TextStyle(fontFamily: "Roboto"),
-                    ))),
-                Container(
-                    padding: EdgeInsets.all(10.0),
-                    child: Center(
-                        child: Text(
-                      "Our Cloud-enabled, web-based visitor management system is "
-                      "secure, easy to install, implement and maintain, reducing"
-                      " costs and dependence on complicated costly IT infrastructure "
-                      "and personnel.",
-                      style: TextStyle(fontFamily: "Roboto"),
-                    ))),
-                GetStarted(context, width),
-                FooterView()
-              ],
-            )),
-          ],
-        ));
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => BookDemo("Leave us a message")));
+        },
+        child: Icon(Icons.message),
+      ),
+      body: PageContent(),
+    );
   }
 }
 
-// Implemented getStarted block of application
-Widget GetStarted(BuildContext context, double width) {
-  return Container(
-      color: Colors.cyan,
-      child: Column(
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(top: 70.0, bottom: 50.0),
-            padding: EdgeInsets.only(left: width),
-            child: Center(
-              child: Text("Get Started",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: "ZCOOLQing")),
-            ),
+class PageContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: <Widget>[
+        Container(
+//          height: 00.0,
+          color: Colors.transparent,
+          child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.blueAccent,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: const Radius.elliptical(1100.0, 1000.0),
+                  )
+              ),
+              child: Center(
+                  child: Column(
+                    children: <Widget>[
+                      IconImage(),
+                      Container(
+                          padding: EdgeInsets.all(15.0),
+                          child: Text("Welcome to Modern Visitor management",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 35.0,
+                                fontFamily: "Roboto",
+                              )
+                          )
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(top: 15.0, right: 100.0, left: 15.0, bottom: 15.0),
+                          child: Text(
+                              "Access Control + "
+                                  "Integrated Visitor Management",
+                              style: TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 20.0,
+                                  fontFamily: "Roboto",
+                                  fontWeight: FontWeight.w300
+                              )
+                          )
+                      ),
+                      Container(
+                          alignment: Alignment.centerLeft,
+                          margin: EdgeInsets.only(left: 10.0),
+                          child: RaisedButton(
+                            color: Colors.indigo,
+                            padding: EdgeInsets.all(15.0),
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => BookDemo("Book Demo")));
+                              },
+                            child: Text(
+                              "SCHEDULE A DEMO",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
+                      ),
+                      TabView(),
+                    ],
+                  )
+              )
           ),
-          Padding(
-              padding: EdgeInsets.all(10.0),
-              child: RaisedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => UserSignUp()));
-                  },
-                  color: Colors.green,
-                  child: Text("TRY VMS FOR FREE",
-                      style: TextStyle(color: Colors.white, fontSize: 15.0)))),
-          Padding(
-              padding: EdgeInsets.all(10.0),
-              child: RaisedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                BookDemo("Let's Get In Touch")));
-                  },
-                  color: Colors.white,
-                  child: Text("CONTACT US",
-                      style: TextStyle(color: Colors.black, fontSize: 10.0)))),
-        ],
-      ));
+        ),
+        Container(
+            margin: EdgeInsets.only(top: 30.0),
+            padding: EdgeInsets.all(15.0),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text("How does it work?",
+                        style: TextStyle(
+                            color: Colors.lightBlueAccent,
+                            fontSize: 25.0,
+                            fontFamily: "Roboto"
+                        )
+                    )
+                ),
+                Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                        "Our iPad app allows your visitors to check in themselves so "
+                        "you can focus on giving them a friendly welcome. You can"
+                        " start tracking all visitors entries digitally and throw"
+                        " away the paper book on your desk.",
+                        style: TextStyle(fontFamily: "Roboto"))),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.all(10.0),
+                  child: Text("Visitor Sign-in",
+                      style: TextStyle(
+                          color: Colors.lightBlueAccent,
+                          fontSize: 20.0,
+                          fontFamily: "Roboto")),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                      "When a visitor arrives, they’ll enter their "
+                      "information on to the iPad, if required sign NDA"
+                      " and collect their visitor badge.",
+                      style: TextStyle(fontFamily: "Roboto")),
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.all(10.0),
+                  child: Text("Host gets notified",
+                      style: TextStyle(
+                          color: Colors.lightBlueAccent,
+                          fontSize: 20.0,
+                          fontFamily: "Roboto")),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                      "Sequr automatically notifies your employee when their "
+                      "guest arrives by Slack, email, SMS or mobile app"
+                      " notification.",
+                      style: TextStyle(fontFamily: "Roboto")),
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.all(10.0),
+                  child: Text("Host greets their guest",
+                      style: TextStyle(
+                          color: Colors.lightBlueAccent,
+                          fontSize: 20.0,
+                          fontFamily: "Roboto")),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                      "Host knows who to meet and gives friendly welcome to "
+                      "their guests.",
+                      style: TextStyle(fontFamily: "Roboto")),
+                ),
+                DemoVideo(),
+              ],
+            )
+        ),
+        Container(
+            color: Color(0xFFEEEEEE),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.all(40.0),
+                  child: Text("iPad features",
+                      style: TextStyle(
+                          color: Colors.lightBlueAccent,
+                          fontSize: 25.0,
+                          fontFamily: "Roboto")),
+                ),
+                IpadFeatures(),
+                Container(
+                  margin: EdgeInsets.only(top: 20.0, bottom: 60.0),
+                  child: Container(
+                      margin: EdgeInsets.only(left: 50.0),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.settings,
+                                color: Colors.lightBlueAccent,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text(
+                                    "Customize branding",
+                                    style: TextStyle(
+                                        color: Colors.lightBlueAccent,
+                                        fontSize: 15.0,
+                                        fontFamily: "Roboto")),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.camera_alt,
+                                color: Colors.lightBlueAccent,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text(
+                                    "Photo capture",
+                                    style: TextStyle(
+                                        color: Colors.lightBlueAccent,
+                                        fontSize: 15.0,
+                                        fontFamily: "Roboto"
+                                    )
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.notifications,
+                                color: Colors.lightBlueAccent,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text("Instant Arrival Notifications",
+                                    style: TextStyle(
+                                        color: Colors.lightBlueAccent,
+                                        fontSize: 15.0,
+                                        fontFamily: "Roboto"
+                                    )
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.print,
+                                color: Colors.lightBlueAccent,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text("Print visitor badges",
+                                    style: TextStyle(
+                                        color: Colors.lightBlueAccent,
+                                        fontSize: 15.0,
+                                        fontFamily: "Roboto"
+                                    )
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      )),
+                ),
+              ],
+            )),
+        Column(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.all(30.0),
+              child: Center(
+                child: Text("Features",
+                    style: TextStyle(
+                        color: Colors.lightBlueAccent,
+                        fontSize: 25.0,
+                        fontFamily: "Roboto")),
+              ),
+            ),
+            Features(
+                "Unlimited Visitors & Devices",
+                "Sequr welcomes all of your visitors & start tracking all guest"
+                    " entries digitally."),
+            Features(
+                "Customize Branding",
+                "Impress your visitors & give the first right impression with"
+                    " your logo & your color!"),
+            Features(
+                "Collect Visitors' Information",
+                "Capture name, company name, email, photo, purpose of "
+                    "visit and more."),
+            Features("Capture Photos",
+                "Create instant photo badges by capturing photos with Sequr."),
+            Features(
+                "Sign NDA & Waivers",
+                "Visitors can sign legal documents digitally with the touch "
+                    "of their finger."),
+            Features(
+                "Print Visitor Badges",
+                "Quickly identify visitors with photo/name badges for improved "
+                    "security."),
+            Features(
+                "Notify Employees",
+                "Notify your employees of a visit by email, SMS, Slack"
+                    " or Sequr mobile app."),
+            Features(
+                "Report & Analytics",
+                "View and filter your visitor logs and get insights to "
+                    "better manage your office."),
+            Features(
+                "Centralized Management",
+                "Keep track of all visitors’ information in the Sequr"
+                    " dashboard."),
+            Features("Multiple Locations",
+                "Easily manage all of your offices in one place."),
+            Features("Vault",
+                "Keep track of all your signed agreements in one place."),
+          ],
+        ),
+        Container(
+            padding: EdgeInsets.only(bottom: 100.0),
+            color: Color(0xFFEEEEEE),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(top: 60.0),
+                  padding: EdgeInsets.all(20.0),
+                  child: Text(
+                    "Want to see Sequr in action?",
+                    style: TextStyle(
+                      color: Colors.lightBlueAccent,
+                      fontSize: 25.0,
+                      fontFamily: "Roboto",
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(20.0),
+                  child: Text(
+                    "Schedule a demo or get a free quote",
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      fontFamily: "Roboto",
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 5.0),
+                  child: ButtonTheme(
+                    minWidth: 200.0,
+                    child: RaisedButton(
+                      color: Colors.indigo,
+                      padding: EdgeInsets.all(15.0),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => BookDemo("Book Demo")));
+
+                      },
+                      child: Text(
+                        "SCHEDULE A DEMO",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 15.0),
+                  child: ButtonTheme(
+                    minWidth: 200.0,
+                    child: RaisedButton(
+                      color: Colors.indigo,
+                      padding: EdgeInsets.all(15.0),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => UserSignUp()));
+                      },
+                      child: Text(
+                        "FREE QUOTE",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )),
+        MyFooter()
+      ],
+    );
+  }
 }
 
-// For generating footer content of same properies
-Widget FooterContent(String text) {
-  return Padding(
-      padding: EdgeInsets.only(top: 10.0),
-      child: Text(text,
-          style: TextStyle(
-            fontFamily: "Handlee",
-            fontSize: 20.0,
-          )));
+class IconImage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = AssetImage('images/icon.webp');
+    Image image = Image(image: assetImage);
+    return Container(child: image);
+  }
 }
 
-Widget FooterView() {
-  return Column(
-    children: <Widget>[
-      Container(
-        margin: EdgeInsets.only(top: 50.0, bottom: 30.0),
-        child: Text("VMS",
-            style: TextStyle(
-                fontFamily: "Handlee",
-                fontSize: 20.0,
-                fontWeight: FontWeight.w700)),
-      ),
-      FooterContent(
-          "Innovation starts at the Door. The era of the logbook is over"
-          ", the era of VMS is here."),
-      Container(
-          margin: EdgeInsets.only(top: 40.0, bottom: 30.0),
-          padding: EdgeInsets.all(10.0),
-          child: Text("COMPANY",
+class TabView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = AssetImage('images/hero.webp');
+    Image image = Image(image: assetImage);
+    return Container(
+      child: image,
+    );
+  }
+}
+
+class DemoVideo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = AssetImage('images/visitor-ipad.webp');
+    Image image = Image(image: assetImage);
+    return Container(
+        margin: EdgeInsets.only(top: 25.0),
+        padding: EdgeInsets.all(20.0),
+        child: image);
+  }
+}
+
+class IpadFeatures extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = AssetImage('images/ipad-features.png');
+    Image image = Image(image: assetImage);
+    return Container(
+        margin: EdgeInsets.only(top: 25.0),
+        padding: EdgeInsets.all(20.0),
+        child: image);
+  }
+}
+
+Widget Features(String header, String content) {
+  return Container(
+    padding: EdgeInsets.all(15.0),
+    child: Column(
+      children: <Widget>[
+        Container(
+          alignment: Alignment.centerLeft,
+          margin: EdgeInsets.only(bottom: 15.0),
+          child: Text(header,
               style: TextStyle(
-                  fontFamily: "Roboto",
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.w800))),
-      FooterContent("About Us"),
-      FooterContent("Features"),
-      FooterContent("Pricing"),
-      FooterContent("Demo"),
-      FooterContent("Support"),
-      FooterContent("Terms of Use"),
-    ],
+                color: Colors.lightBlueAccent,
+                fontSize: 18.0,
+                fontFamily: "Roboto",
+              )),
+        ),
+        Text(content,
+            style: TextStyle(
+              fontFamily: "Roboto",
+            )),
+      ],
+    ),
   );
 }

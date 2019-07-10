@@ -29,128 +29,150 @@ class _UserSignUp extends State<UserSignUp> {
             title: Text("SignUp")),
         body: Form(
             key: _signUpFormKey,
-            child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: ListView(
-                  children: <Widget>[
-                    Padding(
-                        padding: EdgeInsets.only(
-                            top: _minimumPadding, bottom: _minimumPadding),
-                        child: TextFormField(
-                          keyboardType: TextInputType.text,
-                          controller: userName,
-                          validator: (String value) {
-                            if (value.isEmpty) {
-                              return 'Please enter valid username';
-                            }
-                          },
-                          decoration: InputDecoration(
-                              labelText: 'UserName',
-                              hintText: 'JohnDeo',
-                              errorStyle:
-                                  TextStyle(color: Colors.red, fontSize: 15.0),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0))),
-                        )),
-                    Padding(
-                        padding: EdgeInsets.only(
-                            top: _minimumPadding, bottom: _minimumPadding),
-                        child: TextFormField(
-                          keyboardType: TextInputType.emailAddress,
-                          controller: email,
-                          validator: (String value) {
-                            if (value.isEmpty || !value.contains("@")) {
-                              return 'Please enter valid email';
-                            }
-                          },
-                          decoration: InputDecoration(
-                              labelText: 'Email',
-                              hintText: 'JohnDeo@abc.com',
-                              errorStyle:
-                                  TextStyle(color: Colors.red, fontSize: 15.0),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0))),
-                        )),
-                    Padding(
-                        padding: EdgeInsets.only(
-                            top: _minimumPadding, bottom: _minimumPadding),
-                        child: TextFormField(
-                          keyboardType: TextInputType.number,
-                          controller: mobileNumber,
-                          validator: (String value) {
-                            if (value.isEmpty || value.length != 10) {
-                              return 'Please enter valid 10 digit mobile number';
-                            }
-                          },
-                          decoration: InputDecoration(
-                              labelText: 'Mobile Number',
-                              hintText: '9876543210',
-                              errorStyle:
-                                  TextStyle(color: Colors.red, fontSize: 15.0),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0))),
-                        )),
-                    Padding(
-                        padding: EdgeInsets.only(
-                            top: _minimumPadding, bottom: _minimumPadding),
-                        child: TextFormField(
-                          keyboardType: TextInputType.text,
-                          controller: password,
-                          obscureText: true,
-                          validator: (String value) {
-                            if (value.isEmpty || value.length < 8) {
-                              return 'Please enter at least 8 valid digit password';
-                            }
-                          },
-                          decoration: InputDecoration(
-                              labelText: 'Password',
-                              hintText: 'JohnDeo@1',
-                              errorStyle:
-                                  TextStyle(color: Colors.red, fontSize: 15.0),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0))),
-                        )),
-                    Padding(
-                        padding: EdgeInsets.only(
-                            top: _minimumPadding, bottom: _minimumPadding),
-                        child: TextFormField(
-                          keyboardType: TextInputType.text,
-                          controller: company,
-                          validator: (String value) {
-                            if (value.isEmpty) {
-                              return 'Please enter valid company name';
-                            }
-                          },
-                          decoration: InputDecoration(
-                              labelText: 'Company',
-                              hintText: 'XYZ',
-                              errorStyle:
-                                  TextStyle(color: Colors.red, fontSize: 15.0),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0))),
-                        )),
-                    Padding(
-                        padding: EdgeInsets.all(_minimumPadding * 3),
-                        child: Builder(
-                            builder: (context) =>RaisedButton(
-                              child: Text(
-                                'Sign Up',
-                                textScaleFactor: 1.5,
-                              ),
-                              onPressed: (){
-                                setState(() {
-                                  if(_signUpFormKey.currentState.validate()) {
-                                    showSnackBar(context);
+            child: Container(
+                color: Colors.blueAccent,
+                padding: EdgeInsets.all(20.0),
+                child: Container(
+                    padding: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(15.0))),
+                    child: Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: ListView(
+                        children: <Widget>[
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  top: _minimumPadding,
+                                  bottom: _minimumPadding),
+                              child: TextFormField(
+                                keyboardType: TextInputType.text,
+                                controller: userName,
+                                validator: (String value) {
+                                  if (value.isEmpty) {
+                                    return 'Please enter valid username';
+                                  }
+                                },
+                                decoration: InputDecoration(
+                                    labelText: 'UserName',
+                                    hintText: 'JohnDeo',
+                                    errorStyle: TextStyle(
+                                        color: Colors.red, fontSize: 15.0),
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5.0))),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  top: _minimumPadding,
+                                  bottom: _minimumPadding),
+                              child: TextFormField(
+                                keyboardType: TextInputType.emailAddress,
+                                controller: email,
+                                validator: (String value) {
+                                  if (value.isEmpty || !value.contains("@")) {
+                                    return 'Please enter valid email';
+                                  }
+                                },
+                                decoration: InputDecoration(
+                                    labelText: 'Email',
+                                    hintText: 'JohnDeo@abc.com',
+                                    errorStyle: TextStyle(
+                                        color: Colors.red, fontSize: 15.0),
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5.0))),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  top: _minimumPadding,
+                                  bottom: _minimumPadding),
+                              child: TextFormField(
+                                keyboardType: TextInputType.number,
+                                controller: mobileNumber,
+                                validator: (String value) {
+                                  if (value.isEmpty || value.length != 10) {
+                                    return 'Please enter valid 10 digit mobile number';
+                                  }
+                                },
+                                decoration: InputDecoration(
+                                    labelText: 'Mobile Number',
+                                    hintText: '9876543210',
+                                    errorStyle: TextStyle(
+                                        color: Colors.red, fontSize: 15.0),
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5.0))),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  top: _minimumPadding,
+                                  bottom: _minimumPadding),
+                              child: TextFormField(
+                                keyboardType: TextInputType.text,
+                                controller: password,
+                                obscureText: true,
+                                validator: (String value) {
+                                  if (value.isEmpty || value.length < 8) {
+                                    return 'Please enter at least 8 valid digit password';
+                                  }
+                                },
+                                decoration: InputDecoration(
+                                    labelText: 'Password',
+                                    hintText: 'JohnDeo@1',
+                                    errorStyle: TextStyle(
+                                        color: Colors.red, fontSize: 15.0),
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5.0))),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  top: _minimumPadding,
+                                  bottom: _minimumPadding),
+                              child: TextFormField(
+                                keyboardType: TextInputType.text,
+                                controller: company,
+                                validator: (String value) {
+                                  if (value.isEmpty) {
+                                    return 'Please enter valid company name';
+                                  }
+                                },
+                                decoration: InputDecoration(
+                                    labelText: 'Company',
+                                    hintText: 'XYZ',
+                                    errorStyle: TextStyle(
+                                        color: Colors.red, fontSize: 15.0),
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5.0))),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.all(_minimumPadding * 3),
+                              child: Builder(
+                                  builder: (context) => RaisedButton(
+                                    color: Colors.blueAccent,
+                                        child: Text(
+                                          'Sign Up',
+                                          textScaleFactor: 1.5,
+                                          style: TextStyle(
+                                            color: Colors.white
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          setState(() {
+                                            if (_signUpFormKey.currentState
+                                                .validate()) {
+                                              showSnackBar(context);
 //                                    Navigator.pop(context);
 
-                                  }
-                                });
-                              },
-                            )
-                        )
-                    ),
-                  ],
-                ))));
+                                            }
+                                          });
+                                        },
+                                      )))
+                        ],
+                      ),
+                    )))));
   }
 
   String signedUpUserDetail() {
