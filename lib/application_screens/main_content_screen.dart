@@ -4,21 +4,35 @@ import "./book_demo.dart";
 import "./signup.dart";
 
 class MainPageContent extends StatelessWidget {
+  var cameras;
+
+  MainPageContent(cameras);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("VMS"),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => BookDemo("Leave us a message")));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => BookDemo("Leave us a message")));
         },
         child: Icon(Icons.message),
       ),
-      body: PageContent(),
+      body: PageContent(cameras),
     );
   }
 }
 
 class PageContent extends StatelessWidget {
+  var cameras;
+
+  PageContent(this.cameras);
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -31,57 +45,52 @@ class PageContent extends StatelessWidget {
                   color: Colors.blueAccent,
                   borderRadius: BorderRadius.only(
                     bottomRight: const Radius.elliptical(1100.0, 1000.0),
-                  )
-              ),
+                  )),
               child: Center(
                   child: Column(
-                    children: <Widget>[
-                      IconImage(),
-                      Container(
-                          padding: EdgeInsets.all(15.0),
-                          child: Text("Welcome to Modern Visitor management",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 35.0,
-                                fontFamily: "Roboto",
-                              )
-                          )
-                      ),
-                      Container(
-                          margin: EdgeInsets.only(top: 15.0, right: 100.0, left: 15.0, bottom: 15.0),
-                          child: Text(
-                              "Access Control + "
-                                  "Integrated Visitor Management",
-                              style: TextStyle(
-                                  color: Colors.white70,
-                                  fontSize: 20.0,
-                                  fontFamily: "Roboto",
-                                  fontWeight: FontWeight.w300
-                              )
-                          )
-                      ),
-                      Container(
-                          alignment: Alignment.centerLeft,
-                          margin: EdgeInsets.only(left: 10.0),
-                          child: RaisedButton(
-                            color: Colors.indigo,
-                            padding: EdgeInsets.all(15.0),
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => BookDemo("Book Demo")));
-                              },
-                            child: Text(
-                              "SCHEDULE A DEMO",
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                          )
-                      ),
-                      TabView(),
-                    ],
-                  )
-              )
-          ),
+                children: <Widget>[
+                  IconImage(),
+                  Container(
+                      padding: EdgeInsets.all(15.0),
+                      child: Text("Welcome to Modern Visitor management",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 35.0,
+                            fontFamily: "Roboto",
+                          ))),
+                  Container(
+                      margin: EdgeInsets.only(
+                          top: 15.0, right: 100.0, left: 15.0, bottom: 15.0),
+                      child: Text(
+                          "Access Control + "
+                          "Integrated Visitor Management",
+                          style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 20.0,
+                              fontFamily: "Roboto",
+                              fontWeight: FontWeight.w300))),
+                  Container(
+                      alignment: Alignment.centerLeft,
+                      margin: EdgeInsets.only(left: 10.0),
+                      child: RaisedButton(
+                        color: Colors.indigo,
+                        padding: EdgeInsets.all(15.0),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BookDemo("Book Demo")));
+                        },
+                        child: Text(
+                          "SCHEDULE A DEMO",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      )),
+                  TabView(),
+                ],
+              ))),
         ),
         Container(
             margin: EdgeInsets.only(top: 30.0),
@@ -94,10 +103,7 @@ class PageContent extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.lightBlueAccent,
                             fontSize: 25.0,
-                            fontFamily: "Roboto"
-                        )
-                    )
-                ),
+                            fontFamily: "Roboto"))),
                 Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Text(
@@ -158,8 +164,7 @@ class PageContent extends StatelessWidget {
                 ),
                 DemoVideo(),
               ],
-            )
-        ),
+            )),
         Container(
             color: Color(0xFFEEEEEE),
             child: Column(
@@ -187,8 +192,7 @@ class PageContent extends StatelessWidget {
                               ),
                               Padding(
                                 padding: EdgeInsets.all(10.0),
-                                child: Text(
-                                    "Customize branding",
+                                child: Text("Customize branding",
                                     style: TextStyle(
                                         color: Colors.lightBlueAccent,
                                         fontSize: 15.0,
@@ -204,14 +208,11 @@ class PageContent extends StatelessWidget {
                               ),
                               Padding(
                                 padding: EdgeInsets.all(10.0),
-                                child: Text(
-                                    "Photo capture",
+                                child: Text("Photo capture",
                                     style: TextStyle(
                                         color: Colors.lightBlueAccent,
                                         fontSize: 15.0,
-                                        fontFamily: "Roboto"
-                                    )
-                                ),
+                                        fontFamily: "Roboto")),
                               ),
                             ],
                           ),
@@ -227,9 +228,7 @@ class PageContent extends StatelessWidget {
                                     style: TextStyle(
                                         color: Colors.lightBlueAccent,
                                         fontSize: 15.0,
-                                        fontFamily: "Roboto"
-                                    )
-                                ),
+                                        fontFamily: "Roboto")),
                               ),
                             ],
                           ),
@@ -245,9 +244,7 @@ class PageContent extends StatelessWidget {
                                     style: TextStyle(
                                         color: Colors.lightBlueAccent,
                                         fontSize: 15.0,
-                                        fontFamily: "Roboto"
-                                    )
-                                ),
+                                        fontFamily: "Roboto")),
                               ),
                             ],
                           ),
@@ -343,8 +340,10 @@ class PageContent extends StatelessWidget {
                       color: Colors.indigo,
                       padding: EdgeInsets.all(15.0),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => BookDemo("Book Demo")));
-
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BookDemo("Book Demo")));
                       },
                       child: Text(
                         "SCHEDULE A DEMO",
@@ -363,7 +362,10 @@ class PageContent extends StatelessWidget {
                       color: Colors.indigo,
                       padding: EdgeInsets.all(15.0),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => UserSignUp()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UserSignUp(cameras)));
                       },
                       child: Text(
                         "FREE QUOTE",

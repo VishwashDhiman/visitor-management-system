@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import './login.dart';
+import './home_screen.dart';
 
 class UserSignUp extends StatefulWidget {
+  var cameras;
+
+  UserSignUp(this.cameras);
+
   @override
   State<StatefulWidget> createState() {
-    return _UserSignUp();
+    return _UserSignUp(cameras);
   }
 }
 
@@ -16,31 +22,31 @@ class _UserSignUp extends State<UserSignUp> {
   TextEditingController mobileNumber = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController company = TextEditingController();
+  var cameras;
+
+  _UserSignUp(this.cameras);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            leading: IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.pop(context);
-                }),
-            title: Text("SignUp")),
+        appBar: AppBar(title: Text("Visitor Management System")),
         body: Form(
             key: _signUpFormKey,
             child: Container(
-                color: Colors.blueAccent,
+                color: Colors.transparent,
                 padding: EdgeInsets.all(20.0),
-                child: Container(
-                    padding: EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(15.0))),
+                child: Card(
+                    elevation: 15.0,
                     child: Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(30.0),
                       child: ListView(
                         children: <Widget>[
+                          Center(
+                              child: Text(
+                            "Enter Sign Up Details",
+                            style: TextStyle(
+                                fontSize: 20.0, fontWeight: FontWeight.w500),
+                          )),
                           Padding(
                               padding: EdgeInsets.only(
                                   top: _minimumPadding,
@@ -54,13 +60,11 @@ class _UserSignUp extends State<UserSignUp> {
                                   }
                                 },
                                 decoration: InputDecoration(
-                                    labelText: 'UserName',
-                                    hintText: 'JohnDeo',
-                                    errorStyle: TextStyle(
-                                        color: Colors.red, fontSize: 15.0),
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0))),
+                                  labelText: 'UserName',
+                                  hintText: 'JohnDeo',
+                                  errorStyle: TextStyle(
+                                      color: Colors.red, fontSize: 15.0),
+                                ),
                               )),
                           Padding(
                               padding: EdgeInsets.only(
@@ -75,13 +79,11 @@ class _UserSignUp extends State<UserSignUp> {
                                   }
                                 },
                                 decoration: InputDecoration(
-                                    labelText: 'Email',
-                                    hintText: 'JohnDeo@abc.com',
-                                    errorStyle: TextStyle(
-                                        color: Colors.red, fontSize: 15.0),
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0))),
+                                  labelText: 'Email',
+                                  hintText: 'JohnDeo@abc.com',
+                                  errorStyle: TextStyle(
+                                      color: Colors.red, fontSize: 15.0),
+                                ),
                               )),
                           Padding(
                               padding: EdgeInsets.only(
@@ -96,13 +98,11 @@ class _UserSignUp extends State<UserSignUp> {
                                   }
                                 },
                                 decoration: InputDecoration(
-                                    labelText: 'Mobile Number',
-                                    hintText: '9876543210',
-                                    errorStyle: TextStyle(
-                                        color: Colors.red, fontSize: 15.0),
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0))),
+                                  labelText: 'Mobile Number',
+                                  hintText: '9876543210',
+                                  errorStyle: TextStyle(
+                                      color: Colors.red, fontSize: 15.0),
+                                ),
                               )),
                           Padding(
                               padding: EdgeInsets.only(
@@ -118,13 +118,11 @@ class _UserSignUp extends State<UserSignUp> {
                                   }
                                 },
                                 decoration: InputDecoration(
-                                    labelText: 'Password',
-                                    hintText: 'JohnDeo@1',
-                                    errorStyle: TextStyle(
-                                        color: Colors.red, fontSize: 15.0),
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0))),
+                                  labelText: 'Password',
+                                  hintText: 'JohnDeo@1',
+                                  errorStyle: TextStyle(
+                                      color: Colors.red, fontSize: 15.0),
+                                ),
                               )),
                           Padding(
                               padding: EdgeInsets.only(
@@ -139,25 +137,24 @@ class _UserSignUp extends State<UserSignUp> {
                                   }
                                 },
                                 decoration: InputDecoration(
-                                    labelText: 'Company',
-                                    hintText: 'XYZ',
-                                    errorStyle: TextStyle(
-                                        color: Colors.red, fontSize: 15.0),
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0))),
+                                  labelText: 'Company',
+                                  hintText: 'XYZ',
+                                  errorStyle: TextStyle(
+                                      color: Colors.red, fontSize: 15.0),
+                                ),
                               )),
                           Padding(
-                              padding: EdgeInsets.all(_minimumPadding * 3),
+                              padding: EdgeInsets.only(
+                                  top: _minimumPadding * 3,
+                                  left: _minimumPadding * 3,
+                                  right: _minimumPadding * 3),
                               child: Builder(
                                   builder: (context) => RaisedButton(
-                                    color: Colors.blueAccent,
+                                        color: Colors.blueAccent,
                                         child: Text(
                                           'Sign Up',
                                           textScaleFactor: 1.5,
-                                          style: TextStyle(
-                                            color: Colors.white
-                                          ),
+                                          style: TextStyle(color: Colors.white),
                                         ),
                                         onPressed: () {
                                           setState(() {
@@ -165,11 +162,32 @@ class _UserSignUp extends State<UserSignUp> {
                                                 .validate()) {
                                               showSnackBar(context);
 //                                    Navigator.pop(context);
-
+                                              _signUpFormKey.currentState
+                                                  .reset();
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          HomeScreen(cameras)));
                                             }
                                           });
                                         },
-                                      )))
+                                      ))),
+                          ListTile(
+                            title: Text(
+                              "Already Signed Up then login here.",
+                              style: TextStyle(
+                                  color: Colors.blue, fontFamily: "Roboto"),
+                            ),
+                            onTap: () {
+                              _signUpFormKey.currentState.reset();
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          UserLogin(cameras)));
+                            },
+                          )
                         ],
                       ),
                     )))));

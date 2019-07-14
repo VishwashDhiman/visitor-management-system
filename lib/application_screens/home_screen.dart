@@ -1,132 +1,35 @@
 import 'package:flutter/material.dart';
-import './main_content_screen.dart';
-import './login.dart';
-import './signup.dart';
+import './schedule_visit.dart';
+import './invite.dart';
+import './setting_screen.dart';
 
-class MyHomePage extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
+  var cameras;
+
+  HomeScreen(this.cameras);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("VMS")),
-      body: MainPageContent(),
-      drawer: HomePageDrawer(),
-    );
-  }
-}
-
-// Implemeted the drawer
-class HomePageDrawer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-        child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text(
-                            "VMS",
-                            style: TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white
-                            )
-                        )
-                    ),
-                    Expanded(child: DrawerImage()
-                    )
-                  ],
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.blueAccent,
-                ),
-              ),
-              ListTile(
-                title: Text('Home'),
-                onTap: () {
-                  Navigator.pop(context);
-                  },
-              ),
-              ListTile(
-                title: Text('About'),
-                onTap: () {
-                  Navigator.pop(context);
-                  },
-              ),
-              ListTile(
-                title: Text('Products'),
-                onTap: () {
-                  Navigator.pop(context);
-                  },
-              ),
-              ListTile(
-                title: Text('Features'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: Text('Contact Us'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              Row(
-                children: <Widget>[
-                  Padding(
-                      padding: EdgeInsets.all(20.0),
-                      child: ButtonTheme(
-                        minWidth: 80.0,
-                        padding: EdgeInsets.all(10.0),
-                        child: RaisedButton(
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => UserLogin()));
-                          },
-                          child: Text(
-                            "Login",
-                            style: TextStyle(
-                              color:Colors.white
-                            )
-                          ),
-                        )
-                      ),
-                  ),
-                  Padding(
-                      padding: EdgeInsets.all(20.0),
-                      child: ButtonTheme(
-                        minWidth: 80.0,
-                        padding: EdgeInsets.all(10.0),
-                        child: RaisedButton(
-                            onPressed: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => UserSignUp()));
-                            },
-                            child: Text(
-                              "Sign Up",
-                              style: TextStyle(
-                                color: Colors.white
-                              ),
-                            )
-                        ),
-                      ),),
-                ],
-              )
-            ]
-        )
-    );
-  }
-}
-
-class DrawerImage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = AssetImage('images/VMS.png');
-    Image image = Image(image: assetImage);
-    return Container(child: image);
+    return DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.access_time)),
+                Tab(icon: Icon(Icons.mail)),
+                Tab(icon: Icon(Icons.settings)),
+              ],
+            ),
+            title: Text('VMS'),
+          ),
+          body: TabBarView(
+            children: [
+              ScheduleVisit(cameras),
+              Invite(),
+              SettingScreen(cameras),
+            ],
+          ),
+        ));
   }
 }

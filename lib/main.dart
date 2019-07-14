@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-import './application_screens/home_screen.dart';
+import 'package:camera/camera.dart';
+import 'dart:async';
+import './application_screens/signup.dart';
+List<CameraDescription> cameras;
 
-void main() => runApp(VisitorManagement());
+Future<Null> main() async {
+  cameras = await availableCameras();
+  runApp(VisitorManagement());
+}
 
 class VisitorManagement extends StatelessWidget {
   @override
@@ -10,6 +16,7 @@ class VisitorManagement extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Visitor Management System",
-        home: MyHomePage());
+        home: UserSignUp(cameras)
+    );
   }
 }

@@ -1,9 +1,14 @@
 import "package:flutter/material.dart";
+import './home_screen.dart';
 
 class UserLogin extends StatefulWidget {
+  var cameras;
+
+  UserLogin(this.cameras);
+
   @override
   State<StatefulWidget> createState() {
-    return _UserLogin();
+    return _UserLogin(cameras);
   }
 }
 
@@ -12,113 +17,104 @@ class _UserLogin extends State<UserLogin> {
   final _minimumPadding = 10.0;
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  var cameras;
+
+  _UserLogin(this.cameras);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            leading: IconButton(icon: Icon(Icons.arrow_back),
-                onPressed: (){
-              // For releasing the route from stack.
-              Navigator.pop(context);
-            }),
-            title: Text("Login")
-        ),
+        appBar: AppBar(title: Text("VMS")),
         body: Form(
-
             key: _loginFormKey,
             child: Container(
-              color: Colors.blueAccent,
-              padding: EdgeInsets.all(40.0),
-              child: Container(
-                margin: EdgeInsets.only(top: 50.0, bottom: 50.0),
-                padding: EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(15.0))
-                  ),
-                child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: ListView(children: <Widget>[
-                    Padding(
-                    padding: EdgeInsets.only(
-                        top: _minimumPadding, bottom: _minimumPadding),
-                    child: TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      controller: email,
-                      // Simple validation for validating email
-                      validator: (String value) {
-                        if (value.isEmpty || !value.contains("@")) {
-                          return 'Please enter valid email Id';
-                        }
-                      },
-                      decoration: InputDecoration(
-                          labelText: 'Email',
-                          hintText: 'JohnDeo@abc.com',
-                          errorStyle:
-                          TextStyle(color: Colors.red, fontSize: 15.0),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.0))),
-                    )),
-                Padding(
-                    padding: EdgeInsets.only(
-                        top: _minimumPadding, bottom: _minimumPadding),
-                    child: TextFormField(
-                      keyboardType: TextInputType.text,
-                      controller: password,
-                      obscureText: true,
-                      validator: (String value) {
-                        if (value.isEmpty || value.length < 8) {
-                          return 'Please enter valid password';
-                        }
-                      },
-                      decoration: InputDecoration(
-                          labelText: 'Password',
-                          hintText: 'JohnDeo@1',
-                          errorStyle:
-                          TextStyle(color: Colors.red, fontSize: 15.0),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.0))),
-                    )),
-                Padding(
-                    padding: EdgeInsets.all(_minimumPadding * 3),
-                    child: Builder(
-                        builder: (context) =>RaisedButton(
-                          color: Colors.blueAccent,
-                          child: Text(
-                              'Login',
-                              textScaleFactor: 1.5,
+                height: 380.0,
+                color: Colors.transparent,
+                margin: EdgeInsets.only(left: 30.0, right: 30.0, top: 60.0),
+                child: Card(
+                    elevation: 15.0,
+                    child: Padding(
+                        padding: EdgeInsets.all(30.0),
+                        child: ListView(
+                          children: <Widget>[
+                            Center(
+                                child: Text(
+                              "Log In",
                               style: TextStyle(
-                                  color: Colors.white
-                              )
-                          ),
-                          onPressed: (){
-                            setState(() {
-                              if(_loginFormKey.currentState.validate()) {
-                                showSnackBar(context);
-//                                    Navigator.pop(context);
-
-                              }
-                            });
-                          },
-                        )
-                    )
-
-                ),
-
-              ]
-             )
-
-                )
-            )
-        )
-        )
-    );
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            )),
+                            Padding(
+                                padding: EdgeInsets.only(
+                                    top: _minimumPadding,
+                                    bottom: _minimumPadding),
+                                child: TextFormField(
+                                    keyboardType: TextInputType.emailAddress,
+                                    controller: email,
+                                    // Simple validation for validating email
+                                    validator: (String value) {
+                                      if (value.isEmpty ||
+                                          !value.contains("@")) {
+                                        return 'Please enter valid email Id';
+                                      }
+                                    },
+                                    decoration: InputDecoration(
+                                      labelText: 'Email',
+                                      hintText: 'JohnDeo@abc.com',
+                                      errorStyle: TextStyle(
+                                          color: Colors.red, fontSize: 15.0),
+                                    ))),
+                            Padding(
+                                padding: EdgeInsets.only(
+                                    top: _minimumPadding,
+                                    bottom: _minimumPadding),
+                                child: TextFormField(
+                                  keyboardType: TextInputType.text,
+                                  controller: password,
+                                  obscureText: true,
+                                  validator: (String value) {
+                                    if (value.isEmpty || value.length < 8) {
+                                      return 'Please enter valid password';
+                                    }
+                                  },
+                                  decoration: InputDecoration(
+                                    labelText: 'Password',
+                                    hintText: 'JohnDeo@1',
+                                    errorStyle: TextStyle(
+                                        color: Colors.red, fontSize: 15.0),
+                                  ),
+                                )),
+                            Padding(
+                                padding: EdgeInsets.all(_minimumPadding * 3),
+                                child: RaisedButton(
+                                  color: Colors.blueAccent,
+                                  child: Text('Login',
+                                      textScaleFactor: 1.5,
+                                      style: TextStyle(color: Colors.white)),
+                                  onPressed: () {
+                                    setState(() {
+                                      if (_loginFormKey.currentState
+                                          .validate()) {
+                                        _loginFormKey.currentState.reset();
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HomeScreen(cameras)));
+                                        showSnackBar(context);
+                                      }
+                                    });
+                                  },
+                                )),
+                          ],
+                        ))))));
   }
+
   // Generating message
   String loggedInUserDetails() {
-      String userID = email.text;
-      return "Welcom back $userID";
+    String userID = email.text;
+    return "Welcom back $userID";
   }
 
   // Displaying message using Snackbar
@@ -126,10 +122,7 @@ class _UserLogin extends State<UserLogin> {
     String message = loggedInUserDetails();
     var snackBar = SnackBar(
       content: Text(message),
-
     );
     Scaffold.of(context).showSnackBar(snackBar);
   }
 }
-
-
